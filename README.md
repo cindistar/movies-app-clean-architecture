@@ -1,6 +1,6 @@
-# movies_app
+# Movies App
 
-A new Flutter project.
+Using Clean Archtecture, BloC and Unit Tests.
 
 ## Getting Started
 
