@@ -1,65 +1,53 @@
-import 'package:app_example/presentation/controllers/bloc/testing_bloc.dart';
+import 'package:app_example/presentation/blocs/cubit/animation_cubit.dart';
+import 'package:app_example/presentation/widgets/get_now_playing_card.dart';
 import 'package:app_example/presentation/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomePageState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomePageState extends State<HomeScreen> {
-  final bloc = Modular.get<TestingBloc>();
+class _HomeScreenState extends State<HomeScreen> {
+  final cubit = Modular.get<AnimationCubit>();
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => bloc,
-      child: Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          title: const SearchBar(),
-        ),
-        body: Stack(
-          fit: StackFit.expand,
-          children: [
-            FractionallySizedBox(
-              alignment: Alignment.topCenter,
-              heightFactor: 0.4,
-              child: BlocBuilder<TestingBloc, TestingState>(
-                bloc: bloc,
-                builder: (context, state) {
-                  if (state is TestingError) {
-                    return Text(state.message);
-                  } else if (state is TestingLoaded) {
-                    return ListView.builder(
-                        itemCount: state.movies.length,
-                        itemBuilder: (context, index) {
-                          return ListTile(
-                            leading: Text(
-                              state.movies[index].title,
-                              style: const TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                          );
-                        });
-                  }
-                  return Container();
-                },
-              ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const SearchBar(),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(15),
+        child: GestureDetector(
+          onDoubleTap: () {
+            setState(() {
+              cubit.animation();
+            });
+          },
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+               const SizedBox(
+                  height: 220,
+                  child: GetNowPlayingCard(),
+                ),
+                Container(
+                  height: cubit.onClickAnimate ? 220 : 150,
+                  width: double.infinity,
+                  color: Colors.amber,
+                ),
+                Container(
+                  color: Colors.pink,
+                  height: 400,
+                  width: double.infinity,
+                ),
+              ],
             ),
-            // const FractionallySizedBox(
-            //   alignment: Alignment.bottomCenter,
-            //   heightFactor: 0.6,
-            //   child: Placeholder(
-            //     color: Colors.white,
-            //   ),
-            // ),
-          ],
+          ),
         ),
       ),
     );

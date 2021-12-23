@@ -6,12 +6,20 @@ import 'movie_model.dart';
 
 
 class MovieResultsModel extends MovieEntity {
-    MovieResultsModel({
+    const MovieResultsModel({
         required this.page,
         required this.results,
         required this.totalPages,
         required this.totalResults,
-    }) : super(0, '', '', 0.0, '', DateTime.now(), '', 0.0, 0);
+    }) : super(id: 0,
+          backdropPath: 'https://www.w3.org/200',
+          overview: 'Ipsem Lorem',
+          popularity: 1.0,
+          posterPath: 'picture.jpg',
+          releaseDate: '01/01/2000',
+          title: 'Title',
+          voteAverage: 1.0,
+          voteCount: 30,);
 
     final int page;
     final List<MovieModel> results;
@@ -23,10 +31,10 @@ class MovieResultsModel extends MovieEntity {
     String toJson() => json.encode(toMap());
 
     factory MovieResultsModel.fromMap(Map<String, dynamic> json) => MovieResultsModel(
-        page: json["page"],
+        page: json["page"] ?? 1,
         results: List<MovieModel>.from(json["results"].map((x) => MovieModel.fromMap(x))),
-        totalPages: json["total_pages"],
-        totalResults: json["total_results"],
+        totalPages: json["total_pages"] ?? 10,
+        totalResults: json["total_results"] ?? 10,
     );
 
     Map<String, dynamic> toMap() => {

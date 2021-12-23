@@ -4,13 +4,16 @@ import 'package:app_example/domain/repositories/movie_repository.dart';
 import 'package:app_example/domain/usecases/usecase.dart';
 import 'package:dartz/dartz.dart';
 
-class GetUpcomingMoviesUsecase implements UseCase <MovieEntity, NoParams> {
+class GetUpcomingMoviesUsecase implements UseCase <MovieEntity, int> {
   final IMovieRepository repository;
 
   GetUpcomingMoviesUsecase(this.repository);
 
   @override
-  Future<Either<Failure, MovieEntity>> call(NoParams noParams) async {
-    return await repository.getUpcomingMovies();
+  Future<Either<Failure, List<MovieEntity>>> call(int page) async {
+    if (page <= 0) {
+      return Left(InvalidPageFailure('Invalid page'));
+    }
+    return await repository.getUpcomingMovies(page);
   }
 }

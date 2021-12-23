@@ -6,7 +6,7 @@ import 'package:equatable/equatable.dart';
 // Params: what is required to call API (Input)
 
 abstract class UseCase<Output, Input> {
-  Future<Either<Failure, Output>> call(Input params);
+  Future<Either<Failure, List<Output>>> call(Input params);
 }
 
 class NoParams extends Equatable {

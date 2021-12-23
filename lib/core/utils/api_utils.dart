@@ -1,18 +1,20 @@
 class ApiUrls {
   static String requestImage(String img) =>
       'https://image.tmdb.org/t/p/w500/$img';
-  static const String popularMovies = '/movie/popular';
-  static const String topRatedMovies = '/movie/top_rated';
-  static const String upcomingMovies = '/movie/upcoming';
-  static const String nowPlaying = '/movie/now_playing';
-  static const String discoverMovies = '/discover/movie';
-  static const String movieGenres = '/genre/movie/list';
-  static const String search = '/search/multi';
+
+  static String popularMovies(int page) => '/movie/popular?&page=$page';
+  static String topRatedMovies(int page) => '/movie/top_rated?&page=$page';
+  static String upcomingMovies(int page) => '/movie/upcoming?&page=$page';
+  static String nowPlaying(int page) => '/movie/now_playing?&page=$page';
+  static String discoverMovies(int page)=> '/discover/movie';
+  static String movieGenres(int page) => '/genre/movie/list';
+  static String search = '/search/multi';
   // static Function movieDetails = (int id) => '/movie/$id';
   // static Function movieCredits = (int id) => '/movie/$id/credits';
   // static Function movieVideos = (int id) => '/movie/$id/videos';
   // static Function similarMovies = (int id) => '/movie/$id/similar';
-  static String trendingMovies (String timeWindow) => '/trending/movie/$timeWindow'; // * timeWindow: day or week
+  static String trendingMovies(int page) =>
+      '/trending/movie/day?&page=$page'; // * timeWindow: day or week
   // static Function trendingPersons =
   //     (String timeWindow) => '/trending/persons/$timeWindow';
   // static Function personDetails = (int id) => '/person/$id';

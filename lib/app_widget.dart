@@ -10,11 +10,12 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Slidy',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        appBarTheme: const AppBarTheme(color: Color(0xff1b1c27)),
-        scaffoldBackgroundColor: const Color(0xff1b1c27),
+        appBarTheme: const AppBarTheme(color: Color(0xff0b0b0c)),
+        scaffoldBackgroundColor: const Color(0xff0b0b0c),
       ),
     ).modular();
   }

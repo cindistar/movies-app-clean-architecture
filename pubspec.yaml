@@ -1,5 +1,5 @@
 name: app_example
-description: A new Flutter project.
+description: A new Flutter project.http-mock-adapter
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.14.0 <3.0.0"
+  sdk: ">=2.15.0 <3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -29,6 +29,7 @@ environment:
 dependencies:
   bloc: ^8.0.1
   cached_network_image: ^3.2.0
+  carousel_slider: ^4.0.0
   cupertino_icons: ^1.0.2
   dartz: ^0.10.0
   dio: ^4.0.3
@@ -40,6 +41,7 @@ dependencies:
   flutter_svg: ^0.23.0+1
   get_it: ^7.2.0
   google_fonts: ^2.1.0
+  http_mock_adapter: ^0.3.2
   mocktail: ^0.2.0
   pedantic: ^1.11.1
   slidy: ^3.2.2+2
@@ -61,7 +63,7 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/pngs/logo.png
+    - assets/no_image.png
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
