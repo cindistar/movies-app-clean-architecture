@@ -33,7 +33,7 @@ a list of trailers.
 
 # Supported state management solutions
   
-- [Bloc](https://pub.dev/packages/bloc)
+- [Bloc 8.0.2 (latest version)](https://pub.dev/packages/bloc)
 - [Cubit](https://pub.dev/packages/flutter_bloc)
   
 # Packages 
