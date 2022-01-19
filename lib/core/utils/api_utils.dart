@@ -6,12 +6,13 @@ class ApiUrls {
   static String topRatedMovies(int page) => '/movie/top_rated?&page=$page';
   static String upcomingMovies(int page) => '/movie/upcoming?&page=$page';
   static String nowPlaying(int page) => '/movie/now_playing?&page=$page';
-  static String discoverMovies(int page)=> '/discover/movie';
-  static String movieGenres(int page) => '/genre/movie/list';
-  static String search = '/search/multi';
-  // static Function movieDetails = (int id) => '/movie/$id';
-  // static Function movieCredits = (int id) => '/movie/$id/credits';
-  // static Function movieVideos = (int id) => '/movie/$id/videos';
+  //static String discoverMovies(int page) => '/discover/movie';
+  static String movieGenres() => '/genre/movie/list';
+  static String searchMovies(String searchText) => '/search/movie?&query=$searchText';
+  static String movie(int id) => '/movie/$id?';
+  static String movieByGenres(int genreId) => '/movie/popular?&with_genres=$genreId';
+  static String movieCredits(int id) => '/movie/$id/credits?';
+  static String movieVideos(int id) => '/movie/$id/videos?';
   // static Function similarMovies = (int id) => '/movie/$id/similar';
   static String trendingMovies(int page) =>
       '/trending/movie/day?&page=$page'; // * timeWindow: day or week
@@ -19,7 +20,6 @@ class ApiUrls {
   //     (String timeWindow) => '/trending/persons/$timeWindow';
   // static Function personDetails = (int id) => '/person/$id';
   // static Function personMovieCredits = (int id) => '/person/$id/movie_credits';
-  // static Function videoThumbnail =
-  //     (String key) => 'https://img.youtube.com/vi/$key/0.jpg';
+  static String videoThumbnail(String key) => 'https://img.youtube.com/vi/$key/0.jpg';
 
 }

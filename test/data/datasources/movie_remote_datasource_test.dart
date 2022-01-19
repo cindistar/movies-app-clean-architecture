@@ -51,9 +51,9 @@ void main() {
     'should return a MovieResultsModel when the response code is 200',
     () async {
       // arrange
-      const moviesResultModel = MovieResultsModel(
+      var moviesResultModel = MovieResultsModel(
         page: 1,
-        results: <MovieModel>[],
+        results: const <MovieModel>[],
         totalPages: 10,
         totalResults: 10,
       );

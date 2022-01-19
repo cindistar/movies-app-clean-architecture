@@ -1,6 +1,10 @@
-import 'package:app_example/presentation/blocs/cubit/animation_cubit.dart';
-import 'package:app_example/presentation/widgets/get_now_playing_card.dart';
-import 'package:app_example/presentation/widgets/search_bar.dart';
+// ignore_for_file: sized_box_for_whitespace
+
+import 'package:app_example/presentation/blocs/cubit/animation/animation_cubit.dart';
+import 'package:app_example/presentation/widgets/now_playing_movies_listview.dart';
+import 'package:app_example/presentation/widgets/search_bar/search_bar.dart';
+import 'package:app_example/presentation/widgets/genres_and_popular_movies.dart';
+import 'package:app_example/presentation/widgets/tabs/tabbar_movies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -12,7 +16,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   final cubit = Modular.get<AnimationCubit>();
+
 
   @override
   Widget build(BuildContext context) {
@@ -22,31 +28,26 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(15),
-        child: GestureDetector(
-          onDoubleTap: () {
-            setState(() {
-              cubit.animation();
-            });
-          },
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-               const SizedBox(
-                  height: 220,
-                  child: GetNowPlayingCard(),
-                ),
-                Container(
-                  height: cubit.onClickAnimate ? 220 : 150,
-                  width: double.infinity,
-                  color: Colors.amber,
-                ),
-                Container(
-                  color: Colors.pink,
-                  height: 400,
-                  width: double.infinity,
-                ),
-              ],
-            ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 200,
+                //width: 100,
+                child: NowPlayingMoviesScreen(),
+              ),
+              Container(
+                //color: Colors.amber,
+                height: 480,
+                child: const TabGenresWidget(),
+              
+              ),
+              Container(
+                height: 720,
+                //color: Colors.deepPurpleAccent,
+                child: const TabBarMovies(),
+              ),
+            ],
           ),
         ),
       ),

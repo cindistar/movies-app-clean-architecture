@@ -7,7 +7,7 @@ class DioHttpClientImplementation implements HttpClient {
     try {
       _dio = Dio(
         BaseOptions(
-          baseUrl: "https://api.themoviedb.org/3/",
+          baseUrl: "https://api.themoviedb.org/3",
           headers: {
             'api-key': 'api_key=d20a9f45fadf53b679cdb601f6f98125',
             'contentType': 'application/json; charset=utf-8',
@@ -23,7 +23,13 @@ class DioHttpClientImplementation implements HttpClient {
   }
 
   @override
-  Future<Response<T>> get<T>(String url) {
-    return _dio.get<T>(url);
+  Future<Response<T>> get<T>(
+    String url, {
+    Map<String, dynamic>? queryParameters,
+  }) {
+    return _dio.get<T>(
+      url,
+      queryParameters: queryParameters,
+    );
   }
 }

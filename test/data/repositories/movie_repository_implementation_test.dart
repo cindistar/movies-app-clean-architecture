@@ -22,9 +22,9 @@ void main() {
     () async {
       // arrange
       const page = 1;
-      const movieResultsModel = MovieResultsModel(
+      var movieResultsModel = MovieResultsModel(
         page: page,
-        results: [],
+        results: const [],
         totalPages: 0,
         totalResults: 0,
       );

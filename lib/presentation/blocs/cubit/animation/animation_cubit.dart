@@ -14,7 +14,8 @@ class AnimationCubit extends Cubit<AnimationState> {
     onClickAnimate = !onClickAnimate;
   }
 
-  nowPlaying(){
+  nowPlaying() {
     nowPlayingAnimation = !nowPlayingAnimation;
   }
+
 }

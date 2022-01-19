@@ -1,4 +1,5 @@
 import 'package:app_example/domain/entitites.dart/movie_entity.dart';
+import 'package:app_example/domain/usecases/get_popular_movie_by_genre_usecase.dart';
 import 'package:app_example/domain/usecases/get_now_playing_movies_usecase.dart';
 import 'package:app_example/domain/usecases/get_popular_movies_usecase.dart';
 import 'package:app_example/domain/usecases/get_top_rated_movies_usecase.dart';
@@ -16,6 +17,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   final GetTopRatMoviesUsecase topRatedUsecase;
   final GetPopularMoviesUsecase popularUsecase;
   final GetNowPlayingMoviesUsecase nowPlayingUsecase;
+  final GetMovieByGenreUsecase movieByGenreUsecase;
 
   int page = 1;
 
@@ -25,12 +27,14 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
     this.topRatedUsecase,
     this.popularUsecase,
     this.nowPlayingUsecase,
+    this.movieByGenreUsecase,
   ) : super(const MoviesInitial()) {
     on<GetTrendingMoviesEvent>(getTrendingMovies);
     on<GetUpcomingMoviesEvent>(getUpcomingMovies);
     on<GetTopRatedMoviesEvent>(getTopRatedMovies);
     on<GetPopularMoviesEvent>(getPopularMovies);
     on<GetNowPlayingMoviesvent>(getNowPlayingMoviesvent);
+    on<GetMovieByGenreEvent>(getMovieByGenre);
   }
 
   Future<void> getTrendingMovies(event, emit) async {
@@ -101,5 +105,37 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
       ),
     );
     page++;
+  }
+
+  Future<void> getMovieByGenre(event, emit) async {
+    emit(const MoviesLoading(loading: true));
+    if (event.genreId == 0) {
+      var getMovies = await popularUsecase(page);
+      getMovies.fold(
+        (failure) => emit(const MoviesError('Ops! Something went wrong')),
+        (success) => emit(
+          MoviesLoaded(
+            movies: success,
+          ),
+        ),
+      );
+      page++;
+    } else {
+      emit(const MoviesLoading(loading: true));
+      var getMovies = await movieByGenreUsecase(event.genreId);
+      //print(getMovies);
+      getMovies.fold(
+        (failure) => emit(const MoviesError('Ops! Something went wrong')),
+        (success) {
+          //print(success);
+          emit(
+            MoviesLoaded(
+              movies: success,
+            ),
+          );
+        },
+      );
+      page++;
+    }
   }
 }

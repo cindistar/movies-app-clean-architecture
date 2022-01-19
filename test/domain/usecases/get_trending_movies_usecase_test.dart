@@ -24,6 +24,7 @@ void main() {
       const page = 1;
       const movies = MovieEntity(
         id: 0,
+        genreIds: <int>[],
         backdropPath: 'https://www.w3.org/2000/',
         overview: 'Ipsem Lorem',
         popularity: 1.0,

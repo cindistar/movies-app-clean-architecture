@@ -12,7 +12,6 @@ void main() {
     adult: false,
     overview: "It's a movie",
     releaseDate: "2016-08-03",
-    genreIds: [14, 28, 80],
     id: 297761,
     originalTitle: "Suicide Squad",
     originalLanguage: "en",
@@ -21,7 +20,8 @@ void main() {
     popularity: 0.0,
     voteCount: 0,
     video: false, 
-    voteAverage: 0.0,
+    voteAverage: 0.0, 
+    genreId: <int>[],
   );
   test('should be a subclass of MovieEntity', () {
     expect(movieModel, isA<MovieEntity>());

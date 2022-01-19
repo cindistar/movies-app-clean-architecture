@@ -1,20 +1,21 @@
 import 'package:app_example/domain/entitites.dart/movie_entity.dart';
-import 'package:app_example/presentation/blocs/cubit/animation_cubit.dart';
+import 'package:app_example/presentation/blocs/cubit/animation/animation_cubit.dart';
 import 'package:app_example/presentation/blocs/movies/movies_bloc.dart';
 import 'package:app_example/presentation/widgets/movie_card_widget.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:app_example/core/utils/string_extension_greater_20.dart';
 
-class GetNowPlayingCard extends StatefulWidget {
-  const GetNowPlayingCard({Key? key}) : super(key: key);
+class NowPlayingMoviesScreen extends StatefulWidget {
+  const NowPlayingMoviesScreen({Key? key}) : super(key: key);
 
   @override
-  State<GetNowPlayingCard> createState() => _HomePageState();
+  State<NowPlayingMoviesScreen> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<GetNowPlayingCard> {
+class _HomePageState extends State<NowPlayingMoviesScreen> {
   final List<MovieEntity> _listMovies = [];
   final ScrollController _scrollController = ScrollController();
 
@@ -59,38 +60,64 @@ class _HomePageState extends State<GetNowPlayingCard> {
             return Stack(
               children: [
                 ListView.builder(
-                  shrinkWrap: true,
+                  //shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   controller: _scrollController,
                   itemCount: _listMovies.length,
                   itemBuilder: (context, index) {
-                    return Column(
+                    return Stack(
                       children: [
-                        GestureDetector(
-                          onDoubleTap: () {
-                            setState(() {
-                              cubit.animation();
-                            });
-                          },
+                        Positioned(
+                          bottom: 10,
                           child: AnimatedContainer(
-                            height: cubit.onClickAnimate ? 220 : 150,
-                            width: cubit.onClickAnimate ? 150 : 220,
-                            color: Colors.blue,
                             duration: const Duration(milliseconds: 700),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                right: 13,
-                                left: 0,
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(11),
-                                child: MovieCardWidget(
-                                  movieId: _listMovies[index].id!,
-                                  posterPath: _listMovies[index].posterPath,
+                            width: 200,
+                            height: 40,
+                            //color: Colors.red,
+                            child: Center(
+                              child: Text(
+                                _listMovies[index].title.wordTrim20(),
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  overflow: TextOverflow.visible,
                                 ),
                               ),
                             ),
                           ),
+                        ),
+                        Column(
+                          children: [
+                            GestureDetector(
+                              onDoubleTap: () {
+                                setState(
+                                  () {
+                                    cubit.animation();
+                                  },
+                                );
+                              },
+                              child: AnimatedContainer(
+                                height: cubit.onClickAnimate ? 140 : 200,
+                                width: cubit.onClickAnimate ? 200 : 140,
+                                color: Colors.black,
+                                duration: const Duration(milliseconds: 700),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                    right: 13,
+                                    left: 0,
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(11),
+                                    child: MovieCardWidget(
+                                      movieId: _listMovies[index].id!,
+                                      posterPath: _listMovies[index].posterPath,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     );
@@ -98,7 +125,7 @@ class _HomePageState extends State<GetNowPlayingCard> {
                 ),
                 Positioned(
                   left: 0,
-                  bottom: 100,
+                  bottom: 80,
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
