@@ -55,6 +55,7 @@ a list of trailers.
 
 - Add more screens
 - Add more features
+- Add animations
 - Polish the UI
 - Integrate a remote storage (probably Firebase)
 
