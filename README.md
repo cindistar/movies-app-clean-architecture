@@ -26,3 +26,6 @@ Before running, see instructions on how to get a TMDB API key.
   
 The application is composed by five main sections: Now Playing, Popular, Top Rated, Soon and Trending.
 Each movie shows as a poster using the image URL retrieved from the API. 
+On Detail Movie Screen it's possible to see movie details such as: name, release date, rating, genres,
+overview and cast. If a movie has a trailer available, the button "Watch Trailer" will appear and show 
+a list of trailers.
