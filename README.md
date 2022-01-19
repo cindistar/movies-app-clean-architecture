@@ -33,8 +33,8 @@ a list of trailers.
 
 # Supported state management solutions
   
-bloc
-cubit
+- [Bloc](https://pub.dev/packages/bloc)
+- [Cubit](https://pub.dev/packages/flutter_bloc)
   
 # Packages 
 
@@ -54,6 +54,7 @@ cubit
 # Future Roadmap
 
 - Add more screens
+- Add more features
 - Polish the UI
 - Integrate a remote storage (probably Firebase)
 
