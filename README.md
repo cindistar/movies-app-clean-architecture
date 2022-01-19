@@ -31,7 +31,7 @@ On Detail Movie Screen it's possible to see movie details such as: name, release
 overview and cast. If a movie has a trailer available, the button "Watch Trailer" will appear and show 
 a list of trailers.
 
-# Supported state management solutions
+# Supported State Management Solutions
   
 - [Bloc 8.0.2 (latest version)](https://pub.dev/packages/bloc)
 - [Cubit](https://pub.dev/packages/flutter_bloc)
