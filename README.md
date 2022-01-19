@@ -29,3 +29,18 @@ Each movie shows as a poster using the image URL retrieved from the API.
 On Detail Movie Screen it's possible to see movie details such as: name, release date, rating, genres,
 overview and cast. If a movie has a trailer available, the button "Watch Trailer" will appear and show 
 a list of trailers.
+
+# Supported state management solutions
+  
+bloc
+cubit
+  
+# Packages 
+
+Freezed for app state and json_annotation for data serialization
+Sembast for local data persistence
+http for the API client
+rxdart for combining streams
+
+# Future Roadmap
+
