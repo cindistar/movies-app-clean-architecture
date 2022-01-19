@@ -1,8 +1,8 @@
-# Movies App with Clean Architecture and Tests (in progress)
+# Movies App with Clean Architecture and Unit Tests (in progress)
 
 This project shows how to implement a movies app in Flutter.
 I'm using Clean Archtecture, BloC and Unit Tests.
-The project uses the TMDB API to fetch a list of movies, and includes features such as pagination and local or remote storage
+The app uses the TMDB API to fetch a list of movies, and includes features such as pagination and local or remote storage
 (I'm still deciding wich storage option I will use).
 
 <p float="left">
