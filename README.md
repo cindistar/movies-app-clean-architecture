@@ -20,7 +20,8 @@ The app uses the TMDB API to fetch a list of movies, and includes features such 
   
 # Running the project
   
-Before running, see instructions on how to get a TMDB API key.
+This project uses the TMDB API to get the latest movies data.
+Before running the app you need to sign up on the TMDB website, then obtain an API key on the settings API page.
 
 # App Overview
   
