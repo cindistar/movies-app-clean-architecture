@@ -11,6 +11,7 @@ The app uses the TMDB API to fetch a list of movies, and includes features such 
   <img src="web/icons/movie_3.png" width="250" />
   <img src="web/icons/movie_4.png" width="250" />
   <img src="web/icons/movie_5.png" width="250" />
+  <img src="web/icons/movie_11.png" width="250" />
   <img src="web/icons/movie_6.png" width="250" />
   <img src="web/icons/movie_7.png" width="250" />
   <img src="web/icons/movie_8.png" width="250" />
