@@ -1,4 +1,4 @@
-# Movies App with Clean Architecture and Unit Tests (in progress
+# Movies App with Clean Architecture and Unit Tests (in progress)
 
 This project shows how to implement a movies app in Flutter.
 I'm using Clean Architecture, Bloc 8.0.2 (latest version) and Unit Tests.
