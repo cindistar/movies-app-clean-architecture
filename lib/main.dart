@@ -1,4 +1,3 @@
-
 import 'package:app_example/app_module.dart';
 import 'package:app_example/app_widget.dart';
 import 'package:flutter/material.dart';

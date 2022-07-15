@@ -41,7 +41,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
     emit(const MoviesLoading(loading: true));
     var getMovies = await trendingUsecase(page);
     getMovies.fold(
-      (failure) => emit(const MoviesError('Ops! Something went wrong')),
+      (failure) => emit(const MoviesError('Something went wrong!')),
       (success) => emit(
         MoviesLoaded(
           movies: success,
@@ -55,7 +55,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
     emit(const MoviesLoading(loading: true));
     var getMovies = await upcomingUsecase(page);
     getMovies.fold(
-      (failure) => emit(const MoviesError('Ops! Something went wrong')),
+      (failure) => emit(const MoviesError('Something went wrong!')),
       (success) => emit(
         MoviesLoaded(
           movies: success,
@@ -69,7 +69,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
     emit(const MoviesLoading(loading: true));
     var getMovies = await topRatedUsecase(page);
     getMovies.fold(
-      (failure) => emit(const MoviesError('Ops! Something went wrong')),
+      (failure) => emit(const MoviesError('Something went wrong!')),
       (success) => emit(
         MoviesLoaded(
           movies: success,
@@ -83,7 +83,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
     emit(const MoviesLoading(loading: true));
     var getMovies = await popularUsecase(page);
     getMovies.fold(
-      (failure) => emit(const MoviesError('Ops! Something went wrong')),
+      (failure) => emit(const MoviesError('Something went wrong!')),
       (success) => emit(
         MoviesLoaded(
           movies: success,
@@ -97,7 +97,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
     emit(const MoviesLoading(loading: true));
     var getMovies = await nowPlayingUsecase(page);
     getMovies.fold(
-      (failure) => emit(const MoviesError('Ops! Something went wrong')),
+      (failure) => emit(const MoviesError('Something went wrong!')),
       (success) => emit(
         MoviesLoaded(
           movies: success,
@@ -112,7 +112,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
     if (event.genreId == 0) {
       var getMovies = await popularUsecase(page);
       getMovies.fold(
-        (failure) => emit(const MoviesError('Ops! Something went wrong')),
+        (failure) => emit(const MoviesError('Something went wrong!')),
         (success) => emit(
           MoviesLoaded(
             movies: success,
@@ -125,7 +125,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
       var getMovies = await movieByGenreUsecase(event.genreId);
       //print(getMovies);
       getMovies.fold(
-        (failure) => emit(const MoviesError('Ops! Something went wrong')),
+        (failure) => emit(const MoviesError('Something went wrong!')),
         (success) {
           //print(success);
           emit(

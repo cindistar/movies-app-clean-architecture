@@ -9,7 +9,7 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Slidy',
       theme: ThemeData(
@@ -17,6 +17,8 @@ class AppWidget extends StatelessWidget {
         appBarTheme: const AppBarTheme(color: Color(0xff0b0b0c)),
         scaffoldBackgroundColor: const Color(0xff0b0b0c),
       ),
-    ).modular();
+      routeInformationParser: Modular.routeInformationParser,
+      routerDelegate: Modular.routerDelegate,
+    );
   }
 }

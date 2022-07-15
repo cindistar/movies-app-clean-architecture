@@ -1,30 +1,34 @@
 // ignore_for_file: annotate_overrides, overridden_fields
 
 import 'package:app_example/domain/entitites.dart/cast_entity.dart';
+import 'package:equatable/equatable.dart';
 
-class CastCrewResultModel {
-  CastCrewResultModel({
+class CastCrewResultModel extends Equatable {
+  const CastCrewResultModel({
     required this.id,
     required this.cast,
     required this.crew,
   });
-  late final int id;
-  late final List<CastModel> cast;
-  late final List<Crew> crew;
+  final int id;
+  final List<CastModel> cast;
+  final List<Crew> crew;
 
-  CastCrewResultModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    cast = List.from(json['cast']).map((e) => CastModel.fromJson(e)).toList();
-    crew = List.from(json['crew']).map((e) => Crew.fromJson(e)).toList();
+  factory CastCrewResultModel.fromMap(Map<String, dynamic> json) => CastCrewResultModel(
+        id: json["id"] ?? 1,
+        cast: List<CastModel>.from(json["cast"].map((x) => CastModel.fromMap(x))),
+        crew: List<Crew>.from(json["crew"].map((x) => Crew.fromMap(x))),
+      );
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'cast': cast,
+      'crew': crew,
+    };
   }
 
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['cast'] = cast.map((e) => e.toJson()).toList();
-    _data['crew'] = crew.map((e) => e.toJson()).toList();
-    return _data;
-  }
+  @override
+  List<Object> get props => [id, cast, crew];
 }
 
 class CastModel extends CastEntity {
@@ -36,7 +40,7 @@ class CastModel extends CastEntity {
     required this.name,
     required this.originalName,
     required this.popularity,
-     this.profilePath,
+    this.profilePath,
     required this.castId,
     required this.character,
     required this.creditId,
@@ -60,38 +64,36 @@ class CastModel extends CastEntity {
   final String creditId;
   final int order;
 
-  factory CastModel.fromJson(Map<String, dynamic> json) {
-    return CastModel(
-      castId: json['cast_id'],
-      character: json['character'],
-      creditId: json['credit_id'],
-      gender: json['gender'],
-      id: json['id'],
-      name: json['name'],
-      order: json['order'],
-      profilePath: json['profile_path'],
-      adult: json['adult'],
-      knownForDepartment: json['known_for_department'],
-      originalName: json['original_name'],
-      popularity: json['popularity'],
-    );
-  }
+  factory CastModel.fromMap(Map<String, dynamic> json) => CastModel(
+        adult: json["adult"] ?? false,
+        gender: json["gender"] ?? 1,
+        id: json["id"] ?? 1,
+        knownForDepartment: json["known_for_department"] ?? '',
+        name: json["name"] ?? '',
+        originalName: json["original_name"] ?? '',
+        popularity: json["popularity"] ?? 2.2,
+        profilePath: json["profile_path"] ?? '',
+        castId: json["cast_id"] ?? 2,
+        character: json["character"] ?? 'No information',
+        creditId: json["credit_id"] ?? '',
+        order: json["order"] ?? 3,
+      );
 
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['adult'] = adult;
-    _data['gender'] = gender;
-    _data['id'] = id;
-    _data['known_for_department'] = knownForDepartment;
-    _data['name'] = name;
-    _data['original_name'] = originalName;
-    _data['popularity'] = popularity;
-    _data['profile_path'] = profilePath;
-    _data['cast_id'] = castId;
-    _data['character'] = character;
-    _data['credit_id'] = creditId;
-    _data['order'] = order;
-    return _data;
+  Map<String, dynamic> toMap() {
+    return {
+      "adult": adult,
+      "gender": gender,
+      "id": id,
+      "known_for_department": knownForDepartment,
+      "name": name,
+      "original_name": originalName,
+      "popularity": popularity,
+      "profile_path": profilePath,
+      "cast_id": castId,
+      "creditId": creditId,
+      "character": character,
+      "order": order,
+    };
   }
 }
 
@@ -121,33 +123,33 @@ class Crew {
   late final String department;
   late final String job;
 
-  Crew.fromJson(Map<String, dynamic> json) {
-    adult = json['adult'];
-    gender = json['gender'];
-    id = json['id'];
-    knownForDepartment = json['known_for_department'];
-    name = json['name'];
-    originalName = json['original_name'];
-    popularity = json['popularity'];
-    profilePath = json['profile_path'];
-    creditId = json['credit_id'];
-    department = json['department'];
-    job = json['job'];
+  Crew.fromMap(Map<String, dynamic> json) {
+    adult = json['adult'] ?? false;
+    gender = json['gender'] ?? 1;
+    id = json['id'] ?? 2;
+    knownForDepartment = json['known_for_department'] ?? '';
+    name = json['name'] ?? '';
+    originalName = json['original_name'] ?? '';
+    popularity = json['popularity'] ?? '';
+    profilePath = json['profile_path'] ?? '';
+    creditId = json['credit_id'] ?? '';
+    department = json['department'] ?? '';
+    job = json['job'] ?? '';
   }
 
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['adult'] = adult;
-    _data['gender'] = gender;
-    _data['id'] = id;
-    _data['known_for_department'] = knownForDepartment;
-    _data['name'] = name;
-    _data['original_name'] = originalName;
-    _data['popularity'] = popularity;
-    _data['profile_path'] = profilePath;
-    _data['credit_id'] = creditId;
-    _data['department'] = department;
-    _data['job'] = job;
-    return _data;
+  Map<String, dynamic> toMap() {
+    return {
+      "adult": adult,
+      "gender": gender,
+      "id": id,
+      "known_for_department": knownForDepartment,
+      "name": name,
+      "original_name": originalName,
+      "popularity": popularity,
+      "profile_path": profilePath,
+      "credit_id": creditId,
+      "department": department,
+      "job": job,
+    };
   }
 }

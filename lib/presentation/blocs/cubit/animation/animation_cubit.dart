@@ -10,12 +10,12 @@ class AnimationCubit extends Cubit<AnimationState> {
 
   var nowPlayingAnimation = false;
 
-  animation() {
-    onClickAnimate = !onClickAnimate;
+  bool animation() {
+    return onClickAnimate = !onClickAnimate;
   }
 
-  nowPlaying() {
-    nowPlayingAnimation = !nowPlayingAnimation;
+  bool nowPlaying() {
+    return nowPlayingAnimation = !nowPlayingAnimation;
   }
 
 }

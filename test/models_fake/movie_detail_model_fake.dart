@@ -1,0 +1,30 @@
+import 'package:app_example/data/models/genre_model.dart';
+import 'package:app_example/data/models/movie_detail_model.dart';
+
+final movieDetailModel = MovieDetailModel(
+    adult: false,
+    backdropPath: 'text',
+    belongsToCollection: 23,
+    budget: 1000,
+    genres: const <Genre>[],
+    homepage: 'text',
+    id: 876,
+    imdbId: 'text',
+    originalLanguage: 'English',
+    originalTitle: 'title',
+    overview: 'overview',
+    popularity: 2.0,
+    posterPath: 'posterPath',
+    productionCompanies: const <ProductionCompany>[],
+    productionCountries: const <ProductionCountry>[],
+    releaseDate: 'date',
+    revenue: 5000,
+    runtime: 30,
+    spokenLanguages: const <SpokenLanguage>[],
+    status: 'status',
+    tagline: 'tagline',
+    title: 'title',
+    video: false,
+    voteAverage: 3.3,
+    voteCount: 1,
+  );

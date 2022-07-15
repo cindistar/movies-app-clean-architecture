@@ -6,6 +6,9 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../entities_fake/movie_entity_fake.dart';
+
+
 class MockMovieRepository extends Mock implements IMovieRepository {}
 
 void main() {
@@ -22,20 +25,9 @@ void main() {
     () async {
       // arrange
       const page = 1;
-      const movies = MovieEntity(
-        id: 0,
-        genreIds: <int>[],
-        backdropPath: 'https://www.w3.org/2000/',
-        overview: 'Ipsem Lorem',
-        popularity: 1.0,
-        posterPath: 'picture.jpg',
-        releaseDate: '01/01/2000',
-        title: 'Title',
-        voteAverage: 1.0,
-        voteCount: 30,
+      when(() => repository.getTopRatedMovies(page)).thenAnswer(
+        (_) async => const Right(<MovieEntity>[movieEntity]),
       );
-      when(() => repository.getTopRatedMovies(page))
-          .thenAnswer((_) async => const Right(<MovieEntity>[movies]));
       // act
       final result = await usecase(page);
       // assert
@@ -48,8 +40,9 @@ void main() {
     () async {
       // arrange
       const page = 1;
-      when(() => repository.getTopRatedMovies(page))
-          .thenAnswer((_) async => Left(InvalidPageFailure('Invalid page')));
+      when(() => repository.getTopRatedMovies(page)).thenAnswer(
+        (_) async => Left(InvalidPageFailure('Invalid page')),
+      );
       // act
       final result = await usecase(page);
       // assert

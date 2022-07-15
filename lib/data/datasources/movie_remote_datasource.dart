@@ -24,7 +24,6 @@ class MovieRemoteDataSourceImplementation implements IMovieRemoteDataSource {
   final HttpClient client;
 
   MovieRemoteDataSourceImplementation(this.client);
-
   @override
   Future<MovieResultsModel> getTrendingMovies(int page) async {
     Response response = await client.get(ApiUrls.trendingMovies(page));
@@ -113,7 +112,7 @@ class MovieRemoteDataSourceImplementation implements IMovieRemoteDataSource {
   @override
   Future<CastCrewResultModel> getCastCrew(int id) async {
     Response response = await client.get(ApiUrls.movieCredits(id));
-    final cast = CastCrewResultModel.fromJson(response.data);
+    final cast = CastCrewResultModel.fromMap(response.data);
     //print(cast.cast[0].castId);
     if (response.statusCode == 200) {
       return cast;
