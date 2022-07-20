@@ -10,10 +10,10 @@ class SearchBar extends StatefulWidget {
   const SearchBar({Key? key, this.onChanged}) : super(key: key);
 
   @override
-  _SearchBarState createState() => _SearchBarState();
+  SearchBarState createState() => SearchBarState();
 }
 
-class _SearchBarState extends State<SearchBar> {
+class SearchBarState extends State<SearchBar> {
   final searchMoviesBloc = Modular.get<SearchMoviesBloc>();
 
   @override

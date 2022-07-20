@@ -67,8 +67,7 @@ class AppModule extends Module {
     ),
     ChildRoute(
       '/videos',
-      child: (context, args) =>
-          WatchVideosScreen(watchVideoArguments: args.data),
+      child: (context, args) => WatchVideosScreen(watchVideoArguments: args.data),
     ),
   ];
 }

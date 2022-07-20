@@ -47,6 +47,7 @@ dependencies:
   http_mock_adapter: ^0.3.2
   intl: ^0.17.0
   mocktail: ^0.3.0
+  modular_test: ^2.0.0
   path_provider: ^2.0.8
   pedantic: ^1.11.1
   slidy: ^3.2.2+2

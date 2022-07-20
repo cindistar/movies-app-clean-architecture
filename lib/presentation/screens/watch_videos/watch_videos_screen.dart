@@ -12,10 +12,10 @@ class WatchVideosScreen extends StatefulWidget {
       : super(key: key);
 
   @override
-  _WatchVideosScreenState createState() => _WatchVideosScreenState();
+  WatchVideosScreenState createState() => WatchVideosScreenState();
 }
 
-class _WatchVideosScreenState extends State<WatchVideosScreen> {
+class WatchVideosScreenState extends State<WatchVideosScreen> {
   late List<VideoEntity> _videos;
   late YoutubePlayerController _controller;
 

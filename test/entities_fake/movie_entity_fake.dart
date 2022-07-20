@@ -12,3 +12,4 @@ const movieEntity = MovieEntity(
   voteAverage: 1.0,
   voteCount: 30,
 );
+ 
