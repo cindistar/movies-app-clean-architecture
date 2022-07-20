@@ -137,7 +137,7 @@ class MovieRemoteDataSourceImplementation implements IMovieRemoteDataSource {
   Future<MovieResultsModel> getSearchedMovies(String searchText) async {
     Response response =
         await client.get(ApiUrls.searchMovies(searchText), queryParameters: {
-       'query': searchText,
+      'query': searchText,
     });
     final movies = MovieResultsModel.fromJson(response.toString());
     if (response.statusCode == 200) {
