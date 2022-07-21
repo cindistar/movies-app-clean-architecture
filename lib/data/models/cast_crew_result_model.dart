@@ -15,8 +15,8 @@ class CastCrewResultModel extends Equatable {
 
   factory CastCrewResultModel.fromMap(Map<String, dynamic> json) => CastCrewResultModel(
         id: json["id"] ?? 1,
-        cast: List<CastModel>.from(json["cast"].map((x) => CastModel.fromMap(x))),
-        crew: List<Crew>.from(json["crew"].map((x) => Crew.fromMap(x))),
+        cast: List<CastModel>.from(json["cast"] ?? [].map((x) => CastModel.fromMap(x))),
+        crew: List<Crew>.from(json["crew"] ?? [].map((x) => Crew.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() {

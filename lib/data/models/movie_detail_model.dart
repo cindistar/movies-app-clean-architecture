@@ -124,31 +124,31 @@ class MovieDetailModel extends MovieDetailEntity {
         backdropPath: json["backdrop_path"] ?? '',
         belongsToCollection: json["belongs_to_collection"] ?? '',
         budget: json["budget"] ?? 0,
-        genres: List<Genre>.from(json["genres"].map((x) => Genre.fromMap(x))),
+        genres: List<Genre>.from(json["genres"] ?? [].map((x) => Genre.fromMap(x))),
         homepage: json["homepage"] ?? '',
-        id: json["id"],
+        id: json["id"] ?? 1,
         imdbId: json["imdb_id"] ?? '',
         originalLanguage: json["original_language"] ?? '',
         originalTitle: json["original_title"] ?? 'No information',
         overview: json["overview"] ?? '',
-        popularity: json["popularity"].toDouble() ?? 0.0,
+        popularity: json["popularity"] ?? 0.0,
         posterPath: json["poster_path"],
         productionCompanies: List<ProductionCompany>.from(
             json["production_companies"]
-                .map((x) => ProductionCompany.fromMap(x))),
+                ?? [].map((x) => ProductionCompany.fromMap(x))),
         productionCountries: List<ProductionCountry>.from(
-            json["production_countries"]
+            json["production_countries"] ?? []
                 .map((x) => ProductionCountry.fromMap(x))),
         releaseDate: json["release_date"] ?? '', 
         revenue: json["revenue"] ?? 0,
         runtime: json["runtime"] ?? 0,
         spokenLanguages: List<SpokenLanguage>.from(
-            json["spoken_languages"].map((x) => SpokenLanguage.fromMap(x))),
+            json["spoken_languages"] ?? [].map((x) => SpokenLanguage.fromMap(x))),
         status: json["status"] ?? '',
         tagline: json["tagline"] ?? '',
         title: json["title"] ?? '',
         video: json["video"] ?? false,
-        voteAverage: json["vote_average"].toDouble() ?? 0.0,
+        voteAverage: json["vote_average"] ?? 0.0,
         voteCount: json["vote_count"] ?? 0,
       );
 

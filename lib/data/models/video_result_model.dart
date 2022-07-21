@@ -11,7 +11,7 @@ class VideoResultModel extends Equatable {
   late List<VideoModel> videos;
 
   VideoResultModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = json['id'] ?? 1;
     videos = List.from(json['results']).map((e) => VideoModel.fromJson(e)).toList();
   }
 

@@ -23,8 +23,8 @@ class Genre extends GenreEntity {
   String toJson() => json.encode(toMap());
 
   factory Genre.fromMap(Map<String, dynamic> json) => Genre(
-        id: json["id"],
-        name: json["name"],
+        id: json["id"] ?? 1,
+        name: json["name"] ?? '',
       );
 
   Map<String, dynamic> toMap() => {
