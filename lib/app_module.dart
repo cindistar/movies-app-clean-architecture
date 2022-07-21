@@ -17,8 +17,10 @@ import 'package:app_example/presentation/blocs/videos/bloc/videos_bloc.dart';
 import 'package:app_example/presentation/screens/home_screen.dart';
 import 'package:app_example/presentation/screens/movie_detail_screen.dart';
 import 'package:app_example/presentation/screens/watch_videos/watch_videos_screen.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'core/http_client/http_client.dart';
 import 'data/datasources/genre_remote_datasource.dart';
 import 'domain/usecases/get_all_genres_usecase.dart';
 import 'domain/usecases/get_popular_movie_by_genre_usecase.dart';
@@ -37,8 +39,20 @@ class AppModule extends Module {
         Bind.factory((i) => CastBloc(i())),
         Bind.factory((i) => VideosBloc(i())),
         Bind.factory((i) => SearchMoviesBloc(i())),
-        Bind.lazySingleton((i) => MovieRemoteDataSourceImplementation(i())),
-        Bind.lazySingleton((i) => DioHttpClientImplementation()),
+        Bind.factory((i) => MovieRemoteDataSourceImplementation(i())),
+        Bind.factory((i) => Dio(
+              BaseOptions(
+                baseUrl: "https://api.themoviedb.org/3",
+                headers: {
+                  'api-key': 'd20a9f45fadf53b679cdb601f6f98125',
+                  'contentType': 'application/json; charset=utf-8',
+                  'language': 'en-US',
+                  'authorization':
+                      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMjBhOWY0NWZhZGY1M2I2NzljZGI2MDFmNmY5ODEyNSIsInN1YiI6IjYxODk4YmRkMTYwZTczMDA2NzU0MmQ0MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lc4T9V-qce-g841Nn2UN8nWVBPMF9EQzYYcUFNQuvlU'
+                },
+              ),
+            )),
+        Bind.lazySingleton<HttpClient>((i) => DioHttpClientImplementation(i())),
         Bind.lazySingleton((i) => MovieRepositoryImplementation(i())),
         Bind.lazySingleton((i) => GetNowPlayingMoviesUsecase(i())),
         Bind.lazySingleton((i) => GetPopularMoviesUsecase(i())),
@@ -67,7 +81,8 @@ class AppModule extends Module {
     ),
     ChildRoute(
       '/videos',
-      child: (context, args) => WatchVideosScreen(watchVideoArguments: args.data),
+      child: (context, args) =>
+          WatchVideosScreen(watchVideoArguments: args.data),
     ),
   ];
 }

@@ -40,7 +40,7 @@ class MovieRemoteDataSourceImplementation implements IMovieRemoteDataSource {
   Future<MovieResultsModel> getNowPlayingMovies(int page) async {
     Response response = await client.get(ApiUrls.nowPlaying(page));
     final movies = MovieResultsModel.fromMap(response.data);
-    print(movies.results);
+    //print(movies.results);
     if (response.statusCode == 200) {
       return movies;
     } else {
@@ -135,7 +135,8 @@ class MovieRemoteDataSourceImplementation implements IMovieRemoteDataSource {
 
   @override
   Future<MovieResultsModel> getSearchedMovies(String searchText) async {
-    Response response = await client.get(ApiUrls.searchMovies(searchText), queryParameters: {
+    Response response =
+        await client.get(ApiUrls.searchMovies(searchText), queryParameters: {
       'query': searchText,
     });
     final movies = MovieResultsModel.fromJson(response.toString());

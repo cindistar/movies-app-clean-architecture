@@ -13,10 +13,10 @@ class TabGenresWidget extends StatefulWidget {
   const TabGenresWidget({Key? key}) : super(key: key);
 
   @override
-  _TabGenresWidgetState createState() => _TabGenresWidgetState();
+  TabGenresWidgetState createState() => TabGenresWidgetState();
 }
 
-class _TabGenresWidgetState extends State<TabGenresWidget> {
+class TabGenresWidgetState extends State<TabGenresWidget> {
   int selectedGenre = 0;
 
   final bloc = Modular.get<GenreBloc>();

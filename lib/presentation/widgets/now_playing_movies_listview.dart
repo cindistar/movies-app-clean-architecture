@@ -35,12 +35,12 @@ class _HomePageState extends State<NowPlayingMoviesScreen> {
     });
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    bloc.close();
-    _scrollController.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   // bloc.close();
+  //   // _scrollController.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
