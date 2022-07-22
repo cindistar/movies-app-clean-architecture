@@ -5,15 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-class SearchBar extends StatefulWidget {
+class SearchBar extends StatelessWidget {
   final ValueChanged<String>? onChanged;
-  const SearchBar({Key? key, this.onChanged}) : super(key: key);
+  SearchBar({Key? key, this.onChanged}) : super(key: key);
 
-  @override
-  SearchBarState createState() => SearchBarState();
-}
-
-class SearchBarState extends State<SearchBar> {
   final searchMoviesBloc = Modular.get<SearchMoviesBloc>();
 
   @override

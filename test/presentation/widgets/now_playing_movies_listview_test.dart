@@ -3,11 +3,7 @@ import 'dart:io';
 
 import 'package:app_example/app_module.dart';
 import 'package:app_example/core/http_client/http_client.dart' as core_http_client;
-import 'package:app_example/presentation/screens/movie_detail_screen.dart';
-import 'package:app_example/presentation/widgets/movie_detail/cast_widget.dart';
-import 'package:app_example/presentation/widgets/movie_detail/movie_detail_arguments.dart';
-import 'package:app_example/presentation/widgets/movie_detail/videos_widget.dart';
-import 'package:app_example/presentation/widgets/movie_detail_big_poster.dart';
+import 'package:app_example/presentation/widgets/now_playing_movies_listview.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -47,38 +43,55 @@ void main() {
         );
 
         await tester.pumpWidget(
-          makeTestableWidget(child: MovieDetailScreen(movieDetailArguments: MovieDetailArguments(1))),
+          makeTestableWidget(child: const NowPlayingMoviesScreen()),
         );
         await tester.pump();
-        expect(find.byType(SingleChildScrollView), findsOneWidget);
-        expect(find.byType(Container), findsWidgets);
-        expect(find.byType(MovieDetailBigPoster), findsOneWidget);
-        expect(find.byKey(const Key('movieDetail-releaseDate-key')), findsOneWidget);
-        expect(find.byType(Wrap), findsWidgets);
-        expect(find.byType(ClipRRect), findsWidgets);
-        expect(find.text('Cast'), findsOneWidget);
-        expect(find.byType(CastWidget), findsOneWidget);
-        expect(find.byType(VideosWidget), findsOneWidget);
+        expect(find.byType(Scaffold), findsOneWidget);
+        expect(find.byType(Stack), findsWidgets);
+        expect(find.byType(ListView), findsOneWidget);
+        expect(find.byType(Positioned), findsWidgets);
+        expect(find.byType(GestureDetector), findsWidgets);
+        expect(find.byType(ClipRRect), findsOneWidget);
+        expect(find.text('Now playing'), findsOneWidget);
       },
     );
 
     testWidgets(
-      "should display this widget when the response is 400 (failure/error),",
+      "should find AnimatedContainer widgets",
       (tester) async {
         when(() => mockHttpClient.get(any())).thenAnswer(
           (_) async => Response(
-            statusCode: 400,
+            statusCode: 200,
             data: json.decode(fixture(('movie_result.json'))),
             requestOptions: RequestOptions(path: ''),
           ),
         );
 
         await tester.pumpWidget(
-          makeTestableWidget(child: MovieDetailScreen(movieDetailArguments: MovieDetailArguments(1000))),
+          makeTestableWidget(child: const NowPlayingMoviesScreen()),
         );
-        await tester.pump();
-        expect(find.text('Something went wrong!'), findsOneWidget);
+        await tester.pumpAndSettle(const Duration(milliseconds: 700));
+        expect(find.byType(AnimatedContainer), findsWidgets);
       },
     );
   });
+
+  testWidgets(
+    "should show error text widget when the response is 400",
+    (tester) async {
+      when(() => mockHttpClient.get(any())).thenAnswer(
+        (_) async => Response(
+          statusCode: 400,
+          data: json.decode(fixture(('movie_result.json'))),
+          requestOptions: RequestOptions(path: ''),
+        ),
+      );
+
+      await tester.pumpWidget(
+        makeTestableWidget(child: const NowPlayingMoviesScreen()),
+      );
+      await tester.pump();
+      expect(find.text('Deu ruim!'), findsOneWidget);
+    },
+  );
 }

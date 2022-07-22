@@ -12,7 +12,7 @@ class VideoResultModel extends Equatable {
 
   VideoResultModel.fromJson(Map<String, dynamic> json) {
     id = json['id'] ?? 1;
-    videos = List.from(json['results']).map((e) => VideoModel.fromJson(e)).toList();
+    videos = List.from(json['results'] ?? []).map((e) => VideoModel.fromJson(e)).toList();
   }
 
   Map<String, dynamic> toJson() {

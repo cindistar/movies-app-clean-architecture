@@ -8,10 +8,10 @@ class TabBarMovies extends StatefulWidget {
   const TabBarMovies({Key? key}) : super(key: key);
 
   @override
-  _TabBarMoviesState createState() => _TabBarMoviesState();
+  TabBarMoviesState createState() => TabBarMoviesState();
 }
 
-class _TabBarMoviesState extends State<TabBarMovies> {
+class TabBarMoviesState extends State<TabBarMovies> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

@@ -4,13 +4,17 @@ import 'package:app_example/core/utils/api_utils.dart';
 import 'package:app_example/presentation/blocs/cast/bloc/cast_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class CastWidget extends StatelessWidget {
-  const CastWidget({Key? key}) : super(key: key);
+  CastWidget({Key? key}) : super(key: key);
+
+  final castBloc = Modular.get<CastBloc>();
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CastBloc, CastState>(
+      bloc: castBloc,
       builder: (context, state) {
         if (state is CastLoaded) {
           return Padding(
@@ -35,10 +39,8 @@ class CastWidget extends StatelessWidget {
                           child: CircleAvatar(
                             foregroundColor: Colors.white,
                             radius: 55,
-                            backgroundImage: castEntity.posterPath == null ||
-                                    castEntity.posterPath!.isEmpty
-                                ? const NetworkImage(
-                                    'https://www.helptechco.com/files/1215BP6.png')
+                            backgroundImage: castEntity.posterPath == null || castEntity.posterPath!.isEmpty
+                                ? const NetworkImage('https://www.helptechco.com/files/1215BP6.png')
                                 : NetworkImage(
                                     ApiUrls.requestImage(
                                       castEntity.posterPath!,

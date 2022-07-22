@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const SearchBar(),
+        title: SearchBar(),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15),
