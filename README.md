@@ -1,9 +1,9 @@
 # Movies App with Clean Architecture, Unit Tests, Bloc Tests and Widget Tests
 
-This project shows how to implement a movies app in Flutter.
-I'm using Clean Architecture, Bloc 8.0.2 (latest version), Unit Tests, Bloc Tests and Widget Tests.
-The app uses the TMDB API to fetch a list of movies, and includes features such as pagination and local or remote storage
-(I'm still deciding wich storage option I will use).
+This project demonstrates the implementation of a movie app in Flutter. I'm utilizing Clean Architecture, Bloc 8.0.2, 
+Unit Tests, Bloc Tests, and Widget Tests. The app fetches a list of movies using the TMDB API and incorporates features
+such as pagination and local or remote storage 
+(I'm still deciding which storage option to use).
 
 <p float="left">
   <img src="web/icons/movie_1.png" width="250" />
